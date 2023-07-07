@@ -176,9 +176,8 @@ public class RecordResults extends javax.swing.JFrame {
       runner.setFinishPosition(currentPosition++);
       finisherList.add(runner);
       jtaResults.setText(formatFinisherList());
-      jtfNumber.setText("");
-      jtfName.setText("");
-      jtfNumber.grabFocus();
+    jtfCurrentPosition.setText("" + currentPosition);
+     clearField();
       
   }//GEN-LAST:event_jbtConfirmActionPerformed
 
