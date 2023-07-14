@@ -173,10 +173,15 @@ public class RecordResults extends javax.swing.JFrame {
   }//GEN-LAST:event_jbtAddActionPerformed
 
   private void jbtConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtConfirmActionPerformed
+      
+    if(finisherList.contains(runner)){
+      JOptionPane.showMessageDialog(null,"This finisher has been recorded.", "Duplicate finisher",JOptionPane.INFORMATION_MESSAGE);
+    }else{
       runner.setFinishPosition(currentPosition++);
       finisherList.add(runner);
       jtaResults.setText(formatFinisherList());
-    jtfCurrentPosition.setText("" + currentPosition);
+      jtfCurrentPosition.setText("" + currentPosition);
+    }
      clearField();
       
   }//GEN-LAST:event_jbtConfirmActionPerformed
