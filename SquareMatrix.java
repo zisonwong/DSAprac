@@ -8,43 +8,72 @@ package fraction;
  *
  * @author taruc
  */
-public class TestSquareMatrix {
-    public static void main(String[] args) {
-        SquareMatrixInterface s1 = new SquareMatrix(3);
-        SquareMatrixInterface s2 = new SquareMatrix(3);
-        SquareMatrixInterface s4 = new SquareMatrix(3);
-        System.out.println("s1:\n" + s1);
-        
-        s1.storeValue(1, 1, 1);
-        s1.storeValue(1, 2, 2);
-        s1.storeValue(1, 3, 3);
-        s1.storeValue(2, 1, 4);
-        s1.storeValue(2, 2, 5);
-        s1.storeValue(2, 3, 6);
-        s1.storeValue(3, 1, 7);
-        s1.storeValue(3, 2, 8);
-        s1.storeValue(3, 3, 9);
-        System.out.println("After storeValue, s1: \n" + s1);
-        
-        s1.makeEmpty(2);
-        System.out.println("After makeEmpty, s1: \n" + s1);
-        
-        s2.storeValue(1, 1, 7);
-        s2.storeValue(1, 2, 2);
-        s2.storeValue(1, 3, 4);
-        s2.storeValue(2, 1, 5);
-        s2.storeValue(2, 2, 3);
-        s2.storeValue(2, 3, 2);
-        s2.storeValue(3, 1, 1);
-        s2.storeValue(3, 2, 0);
-        s2.storeValue(3, 3, 1);
-        
-        System.out.println("s2:\n" + s2);
-        
-        SquareMatrixInterface s3 = s1.add(s2);
-        System.out.println("s3: \n" + s3);
-        
-        s4.copy(s2);
-        System.out.println("s4:\n" + s4);
+public class SquareMatrix implements SquareMatrixInterface{
+        private int n;
+        private int [][] array;
+
+    public SquareMatrix(int n){
+        this.n=n;
+        this.array = new int[n][n];
+    }
+
+    @Override
+    public String toString() {
+        String outputStr = "";
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                outputStr += String.format("%5d", array [i][j]);
+            }
+            outputStr += "\n";
+        }
+        return outputStr;
+    }
+    
+    
+    
+    @Override
+    public void makeEmpty(int m) {
+        if (m >= 1 && m <= n) {
+            for (int i = 0; i < m; i++) {
+                for (int j = 0; j < m; j++) {
+                    array[i][j] = 0;
+                }
+            }
+        }
+    }
+
+    @Override
+    public void storeValue(int i, int j, int value) {
+        if (i >= 1 && i <= n && j >= 1 && j <=n) {
+            array[i-1][j-1]=value;
+        }
+    }
+
+    @Override
+    public SquareMatrixInterface add(SquareMatrixInterface m) {
+        SquareMatrix givenMatrix = (SquareMatrix)m;
+        if (this.n == givenMatrix.n) {
+            SquareMatrix resultMatrix = new SquareMatrix(n);
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < n; j++) {
+                    resultMatrix.array[i][j] = array[i][j] + givenMatrix.array[i][j];
+                }
+            }
+            return resultMatrix;
+        }
+        return null;
+    }
+
+    @Override
+    public SquareMatrixInterface copy(SquareMatrixInterface m2) {
+         SquareMatrix givenMatrix = (SquareMatrix)m2;
+        if (this.n == givenMatrix.n) {
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < n; j++) {
+                  array[i][j] = givenMatrix.array[i][j];
+                }
+            }
+        }
+            return null;
     }
 }
