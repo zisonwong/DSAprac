@@ -75,7 +75,16 @@ public class ArraySet<T> implements SetInterface<T> {
 
     @Override
     public SetInterface intersection(SetInterface anotherSet) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        SetInterface<T> resultSet = new ArraySet<>();
+        ArraySet<T> givenSet = (ArraySet<T>) anotherSet;
+        for(int i=0;i < givenSet.numberOfEntries; i++){
+            T currentElement = givenSet.array[i];
+            int index = indexOf(currentElement);
+            if(index!= -1){ //given set's current element is in this set
+                resultSet.add(currentElement);
+            }
+        }
+        return resultSet;
     }
 
     @Override
