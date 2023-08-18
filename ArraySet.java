@@ -87,6 +87,29 @@ public class ArraySet<T> implements SetInterface<T> {
         return resultSet;
     }
 
+@Override
+    public Iterator<T> getIterator(){
+        return new SetIterator();
+    }
+
+    private class SetIterator implements Iterator<T>{
+        private int currentIndex = 0;
+    }
+
+    @Override
+    public boolean hasNext(){
+        return currentIndex < numberOfEntries;
+    }
+    
+    @Override
+    public T next(){
+        T.currentElement = null;
+        if(hasNext()){
+            currentElement = array[currentIndex++];
+        }
+        returncurrentElement;
+    }
+    
     @Override
     public boolean isEmpty() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
