@@ -34,7 +34,9 @@ public class TestSet {
         
         SetInterface<Integer> setB = new ArraySet<>();
         setB.add(20);
+        setB.add(35);
         setB.add(40);
+        setB.add(60);
         System.out.println("\nsetB:" + setB);
         
         SetInterface<Integer> setC = new ArraySet<>();
@@ -45,5 +47,8 @@ public class TestSet {
         
         setB.union(setC);
         System.out.println("\nAfter union, setB:" + setB);
+
+        SetInterface<Integer> setD = setA.intersection(setB);
+        System.out.println("setD:" + setD);
     }
 }
