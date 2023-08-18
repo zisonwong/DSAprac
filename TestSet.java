@@ -22,6 +22,13 @@ public class TestSet {
         System.out.println("Add 30:" + setA.add(30));
         System.out.println("Add 50:" + setA.add(50));
         System.out.println("\nsetA:" + setA);
+
+        int sum = 0;
+        Iterator<Integer> it = setA.getIterator();
+        while(it.hasNext()){
+            sum += it.next();
+        }
+        System.out.println("\nSum of setA's elements:" + sum);       
         
         System.out.println("\n Remove 30:" + setA.remove(30));
         System.out.println("setA : " + setA);
@@ -50,5 +57,7 @@ public class TestSet {
 
         SetInterface<Integer> setD = setA.intersection(setB);
         System.out.println("setD:" + setD);
+
+        
     }
 }
