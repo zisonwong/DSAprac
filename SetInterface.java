@@ -8,8 +8,12 @@ package adt;
  *
  * @author taruc
  */
+
+import java.util.Iterator;
 public interface SetInterface<T>{
     //complete this interface
+
+Iterator<T> getIterator;
     
     boolean add(T newElement);
     
